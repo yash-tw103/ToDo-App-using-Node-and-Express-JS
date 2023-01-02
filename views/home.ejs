@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/forms.css">
+    <script src="https://kit.fontawesome.com/aa8baa8ea9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- container of todo app -->
+
+
+    <div class="container">
+        <div class="to-do">TODO APP</div><hr>
+    <form action="/create-contact" method="POST">
+        <!-- description -->
+        <div class="descrip">
+        <label for="description">Description</label><br>
+        <input type="text" name="descrition" id="description" placeholder="What do you need to do?">
+    </div>
+<div class="cat-due">
+    <!-- cateogry -->
+    <div class="cat">
+        <label for="cateogry">Cateogry</label><br>
+        <select name="cateogry" id="cateogry">
+
+            <option value="">Select Cateogry</option>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="School">School</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Others">Others</option>
+
+        </select>
+    </div>
+    <div class="due">
+        <!-- date -->
+        <label for="due">Due Date</label><br>
+        <input type="date" name="date" id="due">
+    </div>
+
+    <!-- adding add and delete button -->
+<br>
+    
+    </div>
+<div class="buttons">
+    <div class="add-button">
+        <button type="submit"><span><i class="fa fa-plus" aria-hidden="true"></i></span>
+        <span>Add Task</span></button>
+    </div>
+    <!-- <div class="delete-button">
+        <div class="delt"><a href=""><span><i class="fa fa-trash" aria-hidden="true"></i></span>
+        <span>Delete Task</span></a></div>
+    </div> -->
+    
+    </form>
+    </div>
+    <hr >
+
+    <!-- displaying content -->
+
+    <div class="array-part">
+        <div>
+            <% let p=1 ; %>
+                <%for (let i of contact_List){ %>
+                    <div class="info">
+                        <div class="icon" style="display: inline-block;"><a href="/delete-contact/?descrition=<%= i.descrition %>"><i class="fa-solid fa-trash"></i></a></div>
+                        <div class="info-cat" style="display: inline-block; float: right;"><%= i.cateogry%></div>
+                        <div class="info-descri" style="display: inline-block;"><%= p %>) <%= i.descrition%><% p++%></div><br>
+                        <div class="info-date" style="display: inline-block;"><span><i class="fa fa-calendar" aria-hidden="true"></i></span><span><%= i.date%></span></div>
+                        
+                        
+                    
+                </div>
+                <hr>
+                    <% }%>
+                
+            
+        </div>
+    </div>
+
+    
+</body>
+</html>
